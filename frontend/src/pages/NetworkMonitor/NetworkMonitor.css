@@ -1,0 +1,233 @@
+@import "../../components/shared.css";
+
+/*
+ * Network Monitor presentation layer.
+ * Scoped to `.network-monitor-page`.
+ */
+.network-monitor-page.page-stack {
+  gap: 20px;
+}
+
+/* ---------- Summary Cards ---------- */
+.network-monitor-page .network-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.network-monitor-page .metric-card {
+  min-height: 126px;
+  height: auto;
+  padding: 20px 22px;
+  border: 1px solid var(--d-border);
+  border-radius: 12px;
+  background: var(--d-surface);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.network-monitor-page .metric-card:hover {
+  border-color: rgba(95, 198, 216, 0.35);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  transform: translateY(-1px);
+}
+
+.network-monitor-page .metric-top {
+  color: var(--d-text-3);
+  font: 600 12px/1.4 var(--sans);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.network-monitor-page .metric-value-row > strong {
+  color: #f3f8fa;
+  font: 600 32px/1 var(--sans);
+  letter-spacing: -0.03em;
+}
+
+.network-monitor-page .metric-bottom {
+  color: var(--d-text-3);
+  font: 400 13px/1.4 var(--sans);
+  white-space: normal;
+}
+
+/* ---------- Topology Panel ---------- */
+.network-monitor-page .full-topology-panel {
+  min-height: 0;
+  border: 1px solid var(--d-border);
+  border-radius: 12px;
+  background: var(--d-surface);
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.network-monitor-page .panel-heading {
+  min-height: 60px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--d-soft);
+}
+
+.network-monitor-page .panel-heading h2 {
+  color: var(--d-text-1);
+  font: 600 16px/1.3 var(--sans);
+  letter-spacing: -0.01em;
+}
+
+.network-monitor-page .topology-stream-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font: 600 11.5px/1.2 var(--mono);
+  letter-spacing: 0.05em;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--d-border);
+}
+
+.network-monitor-page .topology-stream-pill.online {
+  color: #4fd1a1;
+  background: rgba(79, 209, 161, 0.08);
+  border-color: rgba(79, 209, 161, 0.22);
+}
+
+.network-monitor-page .topology-stream-pill.stale {
+  color: #f0b95b;
+  background: rgba(240, 185, 91, 0.08);
+  border-color: rgba(240, 185, 91, 0.22);
+}
+
+.network-monitor-page .topology-stream-pill.offline {
+  color: var(--d-text-3);
+  background: rgba(255, 255, 255, 0.02);
+  border-color: var(--d-soft);
+}
+
+.network-monitor-page .topology-stream-pill .status-dot {
+  width: 6px;
+  height: 6px;
+}
+
+.network-monitor-page .topology-tools {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.network-monitor-page .text-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--d-text-3);
+  font: 500 12.5px/1.2 var(--mono);
+  background: rgba(255, 255, 255, 0.02);
+  padding: 5px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--d-soft);
+}
+
+.network-monitor-page .text-note svg {
+  color: var(--d-accent);
+  opacity: 0.85;
+}
+
+.network-monitor-page .topology-canvas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  min-height: 440px;
+  padding: 24px 24px 56px;
+}
+
+.network-monitor-page .topology-canvas .topology-svg {
+  width: 100%;
+  max-width: 1020px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.network-monitor-page .canvas-hint {
+  right: 24px;
+  bottom: 16px;
+  left: 24px;
+  color: var(--d-text-3);
+  font: 500 13px/1.3 var(--sans);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.network-monitor-page .canvas-hint .status-dot {
+  width: 7px;
+  height: 7px;
+  box-shadow: 0 0 6px #4fd1a1;
+}
+
+.network-monitor-page .full-legend {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  padding: 16px 24px;
+  border-top: 1px solid var(--d-soft);
+  color: var(--d-text-2);
+  font: 500 13px/1 var(--sans);
+}
+
+.network-monitor-page .full-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.network-monitor-page .full-legend .legend-line {
+  width: 20px;
+  height: 3.5px;
+  border-radius: 2px;
+}
+
+.network-monitor-page .full-legend .status-dot {
+  width: 7px;
+  height: 7px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1180px) {
+  .network-monitor-page .network-metrics-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .network-monitor-page .network-metrics-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .network-monitor-page .panel-heading {
+    padding: 0 16px;
+  }
+
+  .network-monitor-page .topology-canvas {
+    min-height: 280px;
+    padding: 14px 14px 48px;
+    overflow-x: auto;
+  }
+
+  .network-monitor-page .full-legend {
+    padding: 14px 16px;
+    gap: 10px 18px;
+    font-size: 12px;
+  }
+
+  .network-monitor-page .canvas-hint {
+    right: 16px;
+    bottom: 12px;
+    left: 16px;
+    font-size: 11.5px;
+  }
+}

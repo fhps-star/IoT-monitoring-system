@@ -1,0 +1,355 @@
+@import "../../components/shared.css";
+
+.network-analytics-page.page-stack {
+  gap: 20px;
+}
+
+/* Controls Bar */
+.network-analytics-page .analytics-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.network-analytics-page .updated-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font: 600 12px/1.2 var(--sans);
+  letter-spacing: 0.05em;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--d-border);
+  color: var(--d-text-2);
+}
+
+.network-analytics-page .updated-label.status-healthy {
+  color: #4fd1a1;
+  background: rgba(79, 209, 161, 0.08);
+  border-color: rgba(79, 209, 161, 0.22);
+}
+
+.network-analytics-page .updated-label.status-stale {
+  color: #f0b95b;
+  background: rgba(240, 185, 91, 0.08);
+  border-color: rgba(240, 185, 91, 0.22);
+}
+
+.network-analytics-page .updated-label.status-offline {
+  color: var(--d-text-3);
+  background: rgba(255, 255, 255, 0.02);
+  border-color: var(--d-soft);
+}
+
+.network-analytics-page .analytics-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Metric Segmented Control */
+.network-analytics-page .segmented-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 8px;
+  background: #0d161d;
+  border: 1px solid var(--d-border);
+}
+
+.network-analytics-page .segmented-control button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 16px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--d-text-3);
+  cursor: pointer;
+  font: 500 13px/1 var(--sans);
+  letter-spacing: 0.01em;
+  transition: all 0.16s ease;
+}
+
+.network-analytics-page .segmented-control button:hover {
+  color: var(--d-text-1);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.network-analytics-page .segmented-control button.selected {
+  background: #172d38;
+  border-color: rgba(95, 198, 216, 0.45);
+  color: #f0fbff;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.network-analytics-page .segmented-control button svg {
+  opacity: 0.85;
+}
+
+.network-analytics-page .segmented-control button.selected svg {
+  color: var(--d-accent);
+  opacity: 1;
+}
+
+/* Range Select */
+.network-analytics-page .range-select {
+  min-width: 135px;
+  height: 38px;
+  padding: 0 14px;
+  border-radius: 8px;
+  font: 500 13px var(--sans);
+  border: 1px solid var(--d-border);
+  background: #0d161d;
+  color: var(--d-text-1);
+  cursor: pointer;
+  transition: border-color 0.16s ease;
+}
+
+.network-analytics-page .range-select:hover {
+  border-color: rgba(95, 198, 216, 0.4);
+}
+
+/* Metric Cards - 2 Cards Row */
+.network-analytics-page .analytics-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.network-analytics-page .metric-card {
+  min-height: 124px;
+  height: auto;
+  padding: 20px 24px;
+  border: 1px solid var(--d-border);
+  border-radius: 12px;
+  background: var(--d-surface);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.network-analytics-page .metric-card:hover {
+  border-color: rgba(95, 198, 216, 0.35);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  transform: translateY(-1px);
+}
+
+.network-analytics-page .metric-top {
+  color: var(--d-text-3);
+  font: 600 12px/1.4 var(--sans);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.network-analytics-page .metric-value-row > strong {
+  color: #f3f8fa;
+  font: 600 32px/1 var(--sans);
+  letter-spacing: -0.03em;
+}
+
+.network-analytics-page .metric-bottom {
+  color: var(--d-text-3);
+  font: 400 13px/1.4 var(--sans);
+  white-space: normal;
+}
+
+/* Chart Panel */
+.network-analytics-page .analytics-chart-panel {
+  min-height: 480px;
+  border: 1px solid var(--d-border);
+  border-radius: 12px;
+  background: var(--d-surface);
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.network-analytics-page .panel-heading {
+  min-height: 58px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--d-soft);
+}
+
+.network-analytics-page .panel-heading h2 {
+  color: var(--d-text-1);
+  font: 600 16px/1.3 var(--sans);
+  letter-spacing: -0.01em;
+}
+
+.network-analytics-page .panel-meta {
+  color: var(--d-accent);
+  font: 600 11.5px/1 var(--mono);
+  letter-spacing: 0.06em;
+  background: rgba(95, 198, 216, 0.08);
+  border: 1px solid rgba(95, 198, 216, 0.2);
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.network-analytics-page .chart-current {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--d-border);
+  font: 500 12.5px/1 var(--sans);
+  color: var(--d-text-2);
+}
+
+.network-analytics-page .chart-current i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.network-analytics-page .chart-current i.dot-live {
+  background: #4fd1a1;
+  box-shadow: 0 0 8px #4fd1a1;
+}
+
+.network-analytics-page .chart-current i.dot-historical {
+  background: #f0b95b;
+  box-shadow: 0 0 8px #f0b95b;
+}
+
+.network-analytics-page .current-source-label {
+  font: 600 10.5px/1 var(--mono);
+  letter-spacing: 0.05em;
+  color: var(--d-text-3);
+}
+
+.network-analytics-page .current-val-text {
+  color: #f3f8fa;
+  font: 600 14px/1 var(--mono);
+}
+
+/* Line Chart Area */
+.network-analytics-page .line-chart-wrap {
+  position: relative;
+  height: 350px;
+  padding: 24px 24px 12px 75px;
+}
+
+.network-analytics-page .line-chart-wrap svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.network-analytics-page .chart-gridline {
+  stroke: rgba(255, 255, 255, 0.06);
+  stroke-width: 1;
+  stroke-dasharray: 4 6;
+}
+
+.network-analytics-page .chart-point {
+  fill: #6bc3d4;
+  stroke: #0e1a22;
+  stroke-width: 2.5;
+  transition: r 0.15s ease;
+}
+
+.network-analytics-page .chart-point:hover {
+  r: 5.5;
+}
+
+.network-analytics-page .chart-y-axis {
+  position: absolute;
+  inset: 22px auto 14px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: var(--d-text-3);
+  font: 500 12px/1 var(--mono);
+  pointer-events: none;
+}
+
+.network-analytics-page .chart-axis {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px 16px 75px;
+  border-top: 1px solid var(--d-soft);
+  color: var(--d-text-3);
+  font: 500 12px/1 var(--sans);
+}
+
+.network-analytics-page .axis-point {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.network-analytics-page .axis-point svg {
+  opacity: 0.7;
+}
+
+/* Empty State */
+.network-analytics-page .empty-state {
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 40px;
+}
+
+.network-analytics-page .empty-state > div {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--d-border);
+  display: grid;
+  place-items: center;
+  color: var(--d-text-3);
+}
+
+.network-analytics-page .empty-state strong {
+  font: 600 16px/1.3 var(--sans);
+  color: var(--d-text-1);
+}
+
+.network-analytics-page .empty-state > span {
+  font: 400 13.5px/1.4 var(--sans);
+  color: var(--d-text-3);
+  max-width: 360px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .network-analytics-page .analytics-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .network-analytics-page .analytics-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .network-analytics-page .analytics-toolbar-right {
+    justify-content: space-between;
+  }
+
+  .network-analytics-page .line-chart-wrap {
+    padding-left: 55px;
+    height: 280px;
+  }
+
+  .network-analytics-page .chart-axis {
+    padding-left: 55px;
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "trained_at": "2026-11-02T17:03:40.925871+00:00",
+  "training_dataset": {
+    "path": "/home/fhp/Desktop/iot/data/wokwi_normal_motor_telemetry.csv",
+    "sha256": "beace53b4869e415f69776dde40f6f7c1db5f6e6c0fa98fc2f218bf51c2a11cb",
+    "source_rows": 590,
+    "clean_rows": 560,
+    "label_counts": {
+      "NORMAL": 560
+    },
+    "training_normal_rows": 292,
+    "feature_rows": 488,
+    "cleaned_dataset_path": "/home/fhp/Desktop/iot/data/wokwi_normal_motor_telemetry_cleaned.csv",
+    "audit_report_path": "/home/fhp/Desktop/iot/data/wokwi_normal_motor_telemetry_audit.json",
+    "sampling_interval_seconds": {
+      "min": 1.0,
+      "median": 2.0,
+      "max": 81.0
+    },
+    "sampling_gaps_over_default_limit": 37,
+    "numeric_distributions": {
+      "vibration_x": {
+        "min": -0.446,
+        "median": 0.003,
+        "max": 0.449
+      },
+      "vibration_y": {
+        "min": -0.445,
+        "median": 0.016,
+        "max": 0.447
+      },
+      "vibration_z": {
+        "min": 9.36,
+        "median": 9.82,
+        "max": 10.25
+      },
+      "temperature_c": {
+        "min": 45.91,
+        "median": 49.54,
+        "max": 54.07
+      },
+      "current_a": {
+        "min": 0.794,
+        "median": 1.409,
+        "max": 1.996
+      },
+      "motor_speed": {
+        "min": 30.3,
+        "median": 60.3,
+        "max": 89.7
+      }
+    },
+    "outlier_counts_by_column": {}
+  },
+  "features": [
+    "vibration_x",
+    "vibration_y",
+    "vibration_z",
+    "temperature_c",
+    "current_a",
+    "motor_speed",
+    "acceleration_magnitude",
+    "vibration_rms",
+    "vibration_peak",
+    "vibration_std",
+    "temperature_rate",
+    "current_rate"
+  ],
+  "preprocessing": {
+    "window_seconds": 10.0,
+    "max_gap_seconds": 2.5,
+    "min_window_samples": 3,
+    "rows_without_causal_window_features": 72,
+    "invalid_feature_rows": 0,
+    "rows_with_features": 488,
+    "feature_names": [
+      "vibration_x",
+      "vibration_y",
+      "vibration_z",
+      "temperature_c",
+      "current_a",
+      "motor_speed",
+      "acceleration_magnitude",
+      "vibration_rms",
+      "vibration_peak",
+      "vibration_std",
+      "temperature_rate",
+      "current_rate"
+    ],
+    "feature_definitions": {
+      "acceleration_magnitude": "sqrt(vibration_x^2 + vibration_y^2 + vibration_z^2)",
+      "vibration_rms": "RMS of per-sample 3-axis vectors after subtracting each axis's trailing-window mean",
+      "vibration_peak": "maximum norm of the same detrended 3-axis vectors in the window",
+      "vibration_std": "population standard deviation of acceleration magnitude in the window",
+      "temperature_rate": "current temperature minus previous temperature, divided by actual elapsed seconds",
+      "current_rate": "current draw minus previous current, divided by actual elapsed seconds"
+    },
+    "vibration_window_semantics": "Trailing, time-based, detrended acceleration samples. These low-rate statistics are not frequency-domain vibration features.",
+    "causal": true,
+    "temperature_and_current_rates": "backward differences divided by actual elapsed seconds"
+  },
+  "model_parameters": {
+    "class": "sklearn.ensemble.IsolationForest",
+    "n_estimators": 200,
+    "contamination": "auto",
+    "random_state": 42
+  },
+  "evaluation": {
+    "validation_rows": 98,
+    "validation_start": "2026-11-02T15:44:50+00:00",
+    "validation_end": "2026-11-02T15:47:52+00:00",
+    "predicted_anomalies": 0,
+    "anomaly_score": {
+      "min": 0.4463175882743688,
+      "p05": 0.45137443367250657,
+      "median": 0.4878851095086444,
+      "p95": 0.5365889780712694,
+      "max": 0.5582486568472721,
+      "meaning": "higher scores are more anomalous"
+    },
+    "normal_validation_rows": 98,
+    "normal_rows_flagged_anomaly": 0,
+    "normal_validation_flagged_rate": 0.0,
+    "labelled_anomaly_rows": 0,
+    "classification_metrics": "Not calculated: validation split contains no labelled anomalies."
+  },
+  "evaluation_method": "chronological holdout; no random shuffling; fit on NORMAL training rows",
+  "chronological_split": {
+    "validation_fraction": 0.2,
+    "calibration_fraction": 0.2,
+    "training_start": "2026-11-02T15:30:21+00:00",
+    "training_end": "2026-11-02T15:39:42+00:00",
+    "calibration_start": "2026-11-02T15:39:44+00:00",
+    "calibration_end": "2026-11-02T15:44:48+00:00",
+    "validation_starts_at": "2026-11-02T15:44:50+00:00"
+  },
+  "threshold_calibration": {
+    "method": "calibration NORMAL median + 3 * 1.4826 * MAD",
+    "normal_calibration_rows": 98,
+    "score_median": 0.4921822795619283,
+    "score_mad": 0.019976953175875667,
+    "anomaly_score_threshold": 0.581035771897588,
+    "contamination": "auto for estimator fit; data-calibrated score threshold at inference"
+  },
+  "model_path": "/home/fhp/Desktop/iot/backend/models/isolation_forest.joblib",
+  "deployment_training_rows": 292,
+  "contamination_note": "IsolationForest contamination='auto'; with NORMAL-only data there are no labelled faults to tune a fault-detection threshold against. The held-out normal flagged rate is reported as a false-alarm proxy.",
+  "limitations": [
+    "This model identifies unusual patterns, not specific fault types.",
+    "Low-rate time-window statistics cannot detect vibration frequencies.",
+    "Wokwi-sourced data describes the simulator, not a physical motor."
+  ]
+}

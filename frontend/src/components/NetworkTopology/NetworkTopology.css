@@ -1,0 +1,71 @@
+@import "../shared.css";
+
+/*
+ * Readable (non-compact) topology: used by the Dashboard and Network Monitor.
+ * SVG geometry is authored 1:1 in NetworkTopology.jsx, so these sizes are real pixels.
+ */
+.topology-large .canvas-hint {
+  right: 20px;
+  bottom: 14px;
+  left: 20px;
+  color: var(--d-text-3);
+  font: 400 12px/1.2 var(--sans);
+}
+
+.topology-large .canvas-hint .status-dot {
+  width: 6px;
+  height: 6px;
+}
+
+.topology-large .topology-link {
+  stroke-width: 2;
+}
+
+.topology-large .gateway-node rect {
+  fill: #13222b;
+  stroke: #2f5b66;
+  stroke-width: 1.2;
+}
+
+.topology-large .gateway-node text {
+  font: 600 13px var(--mono);
+}
+
+.topology-large .gateway-node text.topology-sub {
+  font: 500 9.5px var(--mono);
+  letter-spacing: 0.08em;
+}
+
+.topology-large .device-node-bg {
+  fill: #12212a;
+}
+
+.topology-large .node-id {
+  font: 600 13px var(--mono);
+}
+
+.topology-large .node-name {
+  font: 500 11.5px var(--sans);
+}
+
+.topology-large .node-health {
+  font: 600 10px var(--mono);
+  letter-spacing: 0.06em;
+}
+
+.topology-large .asset-node text,
+.topology-large .sensor-node text {
+  font: 500 9px var(--mono);
+  letter-spacing: 0.06em;
+}
+
+.topology-large .asset-node text:last-of-type,
+.topology-large .sensor-node text:last-of-type {
+  font: 600 10px var(--mono);
+  letter-spacing: 0.02em;
+}
+
+.topology-large .sensor-alert-flag text {
+  font: 600 9px var(--mono);
+  letter-spacing: 0.05em;
+}

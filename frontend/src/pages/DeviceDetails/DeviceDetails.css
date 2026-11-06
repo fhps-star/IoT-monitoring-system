@@ -1,0 +1,495 @@
+@import "../../components/shared.css";
+
+.device-details-page.page-stack {
+  gap: 18px;
+}
+
+.device-details-page .detail-header-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.device-details-page .back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  color: var(--d-text-3);
+  font: 500 13px/1.3 var(--sans);
+  cursor: pointer;
+  padding: 0;
+  width: fit-content;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.device-details-page .back-link:hover {
+  color: var(--d-accent);
+  transform: translateX(-2px);
+}
+
+.device-details-page .detail-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.device-details-page .title-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.device-details-page .detail-title-row h1 {
+  margin: 0;
+  color: var(--d-text-1);
+  font: 600 30px/1.2 var(--sans);
+  letter-spacing: -0.03em;
+}
+
+.device-details-page .asset-type-badge {
+  font: 500 12px/1.2 var(--sans);
+  color: var(--d-text-3);
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--d-border);
+  letter-spacing: 0.01em;
+}
+
+.device-details-page .detail-actions .badge {
+  min-height: 25px;
+  padding: 0 10px;
+  font: 500 11.5px/1 var(--sans);
+  border-radius: 6px;
+}
+
+.device-details-page .detail-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.device-details-page .metric-card {
+  min-height: 126px;
+  height: auto;
+  padding: 18px 20px;
+  border: 1px solid var(--d-border);
+  border-radius: 12px;
+  background: var(--d-surface);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.device-details-page .metric-card:hover {
+  border-color: rgba(95, 198, 216, 0.35);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  transform: translateY(-1px);
+}
+
+.device-details-page .metric-top {
+  color: var(--d-text-3);
+  font: 600 11.5px/1.4 var(--sans);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.device-details-page .metric-value-row > strong {
+  color: #f3f8fa;
+  font: 600 32px/1 var(--sans);
+  letter-spacing: -0.03em;
+}
+
+.device-details-page .detail-metrics > .metric-card:nth-child(3) .metric-value-row > strong {
+  font-size: clamp(24px, 2.2vw, 32px);
+  white-space: nowrap;
+}
+
+.device-details-page .metric-bottom {
+  color: var(--d-text-3);
+  font: 400 12px/1.4 var(--sans);
+  white-space: normal;
+}
+
+.device-details-page .details-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(320px, 1fr);
+  gap: 16px;
+}
+
+.device-details-page .details-main,
+.device-details-page .details-side {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.device-details-page .panel {
+  border: 1px solid var(--d-border);
+  border-radius: 12px;
+  background: var(--d-surface);
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.device-details-page .panel-heading {
+  min-height: 56px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--d-soft);
+}
+
+.device-details-page .panel-heading h2 {
+  color: var(--d-text-1);
+  font: 600 15px/1.3 var(--sans);
+  letter-spacing: -0.01em;
+}
+
+.device-details-page .panel-meta {
+  color: var(--d-text-3);
+  font: 600 11px/1 var(--mono);
+  letter-spacing: 0.06em;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--d-soft);
+}
+
+/* Attached Sensors Section */
+.device-details-page .section-explainer-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 14px 20px 6px;
+  padding: 9px 14px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--d-soft);
+  gap: 12px;
+}
+
+.device-details-page .explainer-source {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--d-text-3);
+  font: 400 12.5px/1.4 var(--sans);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.device-details-page .explainer-icon {
+  color: var(--d-accent);
+  flex-shrink: 0;
+}
+
+.device-details-page .telemetry-protocol-badge {
+  font: 600 10.5px/1 var(--mono);
+  color: var(--d-accent);
+  background: rgba(95, 198, 216, 0.08);
+  border: 1px solid rgba(95, 198, 216, 0.22);
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.device-details-page .sensor-list {
+  padding: 8px 16px 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.device-details-page .sensor-row {
+  min-height: 66px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border-bottom: 1px solid var(--d-soft);
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.device-details-page .sensor-row:last-child {
+  border-bottom: none;
+}
+
+.device-details-page .sensor-row:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.device-details-page .sensor-icon {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  flex-shrink: 0;
+  border: 1px solid var(--d-border);
+  background: #15242d;
+  color: var(--d-accent);
+  transition: transform 0.15s ease;
+}
+
+.device-details-page .sensor-row:hover .sensor-icon {
+  transform: scale(1.04);
+}
+
+.device-details-page .sensor-icon.kind-temperature {
+  color: #f0b95b;
+  background: rgba(240, 185, 91, 0.1);
+  border-color: rgba(240, 185, 91, 0.22);
+}
+
+.device-details-page .sensor-icon.kind-vibration {
+  color: #5fc6d8;
+  background: rgba(95, 198, 216, 0.1);
+  border-color: rgba(95, 198, 216, 0.22);
+}
+
+.device-details-page .sensor-icon.kind-current {
+  color: #7ca8d9;
+  background: rgba(124, 168, 217, 0.1);
+  border-color: rgba(124, 168, 217, 0.22);
+}
+
+.device-details-page .sensor-copy {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.device-details-page .sensor-name-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.device-details-page .sensor-name-line strong {
+  color: var(--d-text-1);
+  font: 600 14px/1.3 var(--sans);
+}
+
+.device-details-page .sensor-channel-tag {
+  font: 600 10px/1 var(--mono);
+  color: var(--d-text-3);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--d-soft);
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+}
+
+.device-details-page .sensor-meta-caption {
+  color: var(--d-text-3);
+  font: 400 12px/1.3 var(--sans);
+}
+
+.device-details-page .sensor-reading {
+  min-width: 85px;
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.device-details-page .reading-value {
+  color: #f3f8fa;
+  font: 600 16px/1.2 var(--mono);
+  letter-spacing: -0.02em;
+}
+
+.device-details-page .reading-unit {
+  color: var(--d-text-3);
+  font: 400 12px/1 var(--sans);
+}
+
+.device-details-page .sensor-row .badge {
+  min-height: 23px;
+  padding: 0 8px;
+  font: 500 11px/1 var(--sans);
+}
+
+/* Device Information Panel */
+.device-details-page .info-sections {
+  padding: 10px 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.device-details-page .info-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.device-details-page .info-group-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 0 8px;
+  font: 600 11px/1 var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--d-accent);
+  border-bottom: 1px solid var(--d-soft);
+  margin-bottom: 2px;
+}
+
+.device-details-page .info-group-title svg {
+  opacity: 0.85;
+}
+
+.device-details-page .info-row {
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.device-details-page .info-row:last-child {
+  border-bottom: none;
+}
+
+.device-details-page .info-row span {
+  color: var(--d-text-3);
+  font: 400 13px/1.3 var(--sans);
+}
+
+.device-details-page .info-row strong {
+  color: var(--d-text-1);
+  font: 500 13px/1.3 var(--mono);
+}
+
+.device-details-page .info-row .timestamp-value {
+  font-size: 12px;
+  color: var(--d-text-2);
+}
+
+.device-details-page .info-row .loss-warning {
+  color: var(--d-amber);
+}
+
+/* Status Pill */
+.device-details-page .status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font: 500 11px/1.2 var(--sans);
+  letter-spacing: 0.02em;
+}
+
+.device-details-page .status-pill.online {
+  background: rgba(79, 209, 161, 0.1);
+  color: #4fd1a1;
+  border: 1px solid rgba(79, 209, 161, 0.25);
+}
+
+.device-details-page .status-pill.offline {
+  background: rgba(239, 107, 107, 0.1);
+  color: #ef6b6b;
+  border: 1px solid rgba(239, 107, 107, 0.25);
+}
+
+.device-details-page .status-pill .status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 6px currentColor;
+}
+
+/* IP Chip & Copy Button */
+.device-details-page .ip-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.device-details-page .mono-ip {
+  padding: 3px 8px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--d-border);
+  color: var(--d-text-1);
+  font: 500 12px/1.3 var(--mono);
+  letter-spacing: 0.02em;
+}
+
+.device-details-page .copy-ip-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border-radius: 4px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--d-text-3);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.device-details-page .copy-ip-btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--d-border);
+  color: var(--d-text-1);
+}
+
+.device-details-page .copy-ok {
+  color: var(--d-green);
+}
+
+@media (max-width: 960px) {
+  .device-details-page .detail-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .device-details-page .details-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .device-details-page .detail-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .device-details-page .panel-heading {
+    padding: 0 16px;
+  }
+
+  .device-details-page .metric-card {
+    min-height: 112px;
+    padding: 14px;
+  }
+
+  .device-details-page .metric-value-row > strong {
+    font-size: 28px;
+  }
+
+  .device-details-page .sensor-list,
+  .device-details-page .info-sections {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .device-details-page .section-explainer-bar {
+    margin: 12px 14px 6px;
+  }
+}
